@@ -38,6 +38,93 @@
 			</ul>
 		</div>
 	</div>
+	<div id="wrapper">
+		<!-- Слайдер -->
+		<div id="slider">
+			<div class="slides">
+				<div class="slide"><img src="images/col2.png" alt="Слайд 1"></div>
+				<div class="slide"><img src="images/Col1.jpg" alt="Слайд 2"></div>
+				<div class="slide"><img src="images/Сol3.jpg" alt="Слайд 3"></div>
+			</div>
+			<div class="navigation">
+				<button class="nav-btn" id="prev">‹</button>
+				<button class="nav-btn" id="next">›</button>
+			</div>
+		</div>
+	</div>
+	
+		<div id="header-wrapper">
+			<h2>Поворот карточек</h2>
+			<!-- Карточка 1 -->
+			<div class="card">
+				<div class="card-inner">
+					<div class="card-front">
+						<img src="images/col2.png" alt="Фронтальная сторона" />
+					</div>
+					<div class="card-back">
+						<p>Информация о предварительных результатах выборов</p>
+					</div>
+				</div>
+			</div>
+			<!-- Карточка 2 -->
+			<div class="card">
+				<div class="card-inner">
+					<div class="card-front">
+						<img src="images/Col1.jpg" alt="Фронтальная сторона" />
+					</div>
+					<div class="card-back">
+						<p>Состоялось 187-е заседание ЦИК России</p>
+					</div>
+				</div>
+			</div>
+			<!-- Карточка 3 -->
+			<div class="card">
+				<div class="card-inner">
+					<div class="card-front">
+						<img src="images/Сol3.jpg" alt="Фронтальная сторона" />
+					</div>
+					<div class="card-back">
+						<p>Выборы депутатов в Москве — 2024</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	  
+	<script>
+	// Добавление взаимодействия с карточками через JavaScript
+	const cards = document.querySelectorAll('.card');
+	  
+		cards.forEach(card => {
+		  card.addEventListener('click', () => {
+			const innerCard = card.querySelector('.card-inner');
+			innerCard.style.transform = 
+			  innerCard.style.transform === 'rotateY(180deg)' 
+				? 'rotateY(0)' 
+				: 'rotateY(180deg)';
+		  });
+		});
+	</script>
+	<script>
+	  // JavaScript для функциональности слайдера
+	  const slides = document.querySelector('.slides');
+	  const slide = document.querySelectorAll('.slide');
+	  const prev = document.getElementById('prev');
+	  const next = document.getElementById('next');
+	
+	  let index = 0;
+	
+	  function showSlide(i) {
+		index = (i + slide.length) % slide.length; // Зацикливание
+		slides.style.transform = `translateX(${-index * 100}%)`;
+	  }
+	
+	  prev.addEventListener('click', () => showSlide(index - 1));
+	  next.addEventListener('click', () => showSlide(index + 1));
+	
+	  // Автоматическая прокрутка слайдов каждые 5 секунд
+	  setInterval(() => showSlide(index + 1), 5000);
+	</script>
 	<div id="page" class="container">
 		<div class="title">
 			<h2>Новости избирательного права и процесса</h2>
