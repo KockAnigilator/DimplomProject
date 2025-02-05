@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,6 +8,70 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<style>
+    
+    
+    #cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .card {
+        width: 280px;
+        height: 380px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+    
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+    
+    .card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .card-front {
+        background: #fff;
+    }
+    
+    .card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card-back {
+        background: #34495e;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 15px;
+        font-size: 16px;
+    }
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -54,43 +118,38 @@
 	</div>
 	
 		<div id="header-wrapper">
-			<h2>Поворот карточек</h2>
-			<!-- Карточка 1 -->
-			<div class="card">
-				<div class="card-inner">
-					<div class="card-front">
-						<img src="images/col2.png" alt="Фронтальная сторона" />
+			<div id="cards-container">
+				<div class="card">
+					<div class="card-inner">
+						<div class="card-front">
+							<img src="images/col2.png" alt="Предварительные результаты" />
+						</div>
+						<div class="card-back">
+							<p>Информация о предварительных результатах выборов</p>
+						</div>
 					</div>
-					<div class="card-back">
-						<p>Информация о предварительных результатах выборов</p>
+				</div>
+				<div class="card">
+					<div class="card-inner">
+						<div class="card-front">
+							<img src="images/Col1.jpg" alt="Заседание ЦИК" />
+						</div>
+						<div class="card-back">
+							<p>Состоялось 187-е заседание ЦИК России</p>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-inner">
+						<div class="card-front">
+							<img src="images/Сol3.jpg" alt="Выборы в Москве" />
+						</div>
+						<div class="card-back">
+							<p>Выборы депутатов в Москве — 2024</p>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Карточка 2 -->
-			<div class="card">
-				<div class="card-inner">
-					<div class="card-front">
-						<img src="images/Col1.jpg" alt="Фронтальная сторона" />
-					</div>
-					<div class="card-back">
-						<p>Состоялось 187-е заседание ЦИК России</p>
-					</div>
-				</div>
-			</div>
-			<!-- Карточка 3 -->
-			<div class="card">
-				<div class="card-inner">
-					<div class="card-front">
-						<img src="images/Сol3.jpg" alt="Фронтальная сторона" />
-					</div>
-					<div class="card-back">
-						<p>Выборы депутатов в Москве — 2024</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	  
 	<script>
 	// Добавление взаимодействия с карточками через JavaScript
 	const cards = document.querySelectorAll('.card');
@@ -104,8 +163,6 @@
 				: 'rotateY(180deg)';
 		  });
 		});
-	</script>
-	<script>
 	  // JavaScript для функциональности слайдера
 	  const slides = document.querySelector('.slides');
 	  const slide = document.querySelectorAll('.slide');
@@ -124,6 +181,27 @@
 	
 	  // Автоматическая прокрутка слайдов каждые 5 секунд
 	  setInterval(() => showSlide(index + 1), 5000);
+
+	  // Получаем все кнопки с классом .nav-btn
+	  const buttons = document.querySelectorAll("button");
+
+	document.querySelectorAll(".nav-btn").forEach(button => {
+    	button.addEventListener("mouseenter", () => {
+        	requestAnimationFrame(() => {
+            	button.style.transform = "scale(1.2)";
+            	button.style.backgroundColor = "#2980b9";
+            	button.style.boxShadow = "0px 10px 20px rgba(0, 0, 0, 0.3)";
+        	});
+    	});
+
+    	button.addEventListener("mouseleave", () => {
+        	requestAnimationFrame(() => {
+            	button.style.transform = "scale(1)";
+            	button.style.backgroundColor = "#3498db";
+            	button.style.boxShadow = "none";
+        	});
+    	});
+	});
 	</script>
 	<div id="page" class="container">
 		<div class="title">

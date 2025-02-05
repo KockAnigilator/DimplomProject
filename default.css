@@ -11,6 +11,8 @@ html, body {
 
 }
 
+
+
 /* Стили для карточек */
 .card {
 	width: 282px;
@@ -96,19 +98,6 @@ html, body {
     transform: translateY(-50%);
   }
 
-  .nav-btn {
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-  .nav-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
 
 body {
 	margin: 0px;
@@ -643,20 +632,7 @@ ul.style3 .first {
 /* Button Style                                                                  */
 /*********************************************************************************/
 
-	.button
-	{
-		display: inline-block;
-		margin-top: 2em;
-		padding: 0em 1em;
-		background: #161616;
-		letter-spacing: 0.10em;
-		line-height: 3em;
-		text-decoration: none;
-		text-transform: uppercase;
-		font-weight: 400;
-		font-size: 1em;
-		color: #FFF;
-	}
+
 	
 /*********************************************************************************/
 /* Social Icon Styles                                                            */
@@ -757,4 +733,31 @@ hr {
 
 #menu1 .last {
 	border-right: none;
+}
+
+/* Стили для кнопок */
+.nav-btn {
+	background-color: #3498db !important;
+	color: white !important;
+	border: none !important;
+	padding: 12px 24px !important;
+	font-size: 18px !important;
+	cursor: pointer !important;
+	border-radius: 5px !important;
+	transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+	display: inline-block !important;
+	text-align: center !important;
+	line-height: normal !important;
+	will-change: transform;
+  }
+
+  /* Эффект увеличения и подсветки при наведении */
+  .nav-btn:hover {
+	background-color: #2980b9 !important;
+	transform: scale(1.9) !important;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  button {
+    display: inline-block !important;
 }
